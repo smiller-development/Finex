@@ -1,10 +1,18 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
 
-
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [
+    pkgs.git
+    pkgs.insomnia
+  ];
 
   # https://devenv.sh/languages/
   languages.go.enable = true;
@@ -21,18 +29,15 @@
   services.postgres = {
     enable = true;
 
-    initialDatabases = [{ name = "book";}];
-
+    initialDatabases = [ { name = "book"; } ];
 
   };
-
 
   # https://devenv.sh/tasks/
   # tasks = {
   #   "myproj:setup".exec = "mytool build";
   #   "devenv:enterShell".after = [ "myproj:setup" ];
   # };
-
 
   # https://devenv.sh/git-hooks/
   # git-hooks.hooks.shellcheck.enable = true;
